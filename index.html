@@ -485,12 +485,6 @@ details summary{-webkit-tap-highlight-color:transparent}
 <div id="live-region" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 <div id="live-alert"  class="sr-only" aria-live="assertive" aria-atomic="true"></div>
 
-<div class="outer">
-<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;">
-  <span class="snm" id="snm">Pantalla 1 — Bienvenida</span>
-  <span class="sdesc" style="font-size:11px;opacity:.5;">| ← → para navegar</span>
-</div>
-
 <div class="shell" id="main-content" role="main">
   <div class="di" aria-hidden="true"></div>
   <!-- High contrast toggle -->
@@ -1960,31 +1954,6 @@ details summary{-webkit-tap-highlight-color:transparent}
 
 
 </div><!-- /shell -->
-
-<!-- OUTER NAV -->
-<div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
-  <div class="npill" role="navigation" aria-label="Pantallas de la aplicación">
-    <div class="nd done" id="nd1" onclick="goTo(1)" title="Bienvenida" role="button" tabindex="0" aria-label="Ir a Bienvenida"></div>
-    <div class="nd done" id="nd2" onclick="goTo(2)" title="Registro" role="button" tabindex="0" aria-label="Ir a Registro"></div>
-    <div class="nd done" id="nd3" onclick="goTo(3)" title="Asistencia" role="button" tabindex="0" aria-label="Ir a Asistencia"></div>
-    <div class="nd act"  id="nd4" onclick="goTo(4)" title="Mapa" role="button" tabindex="0" aria-label="Ir al Mapa"></div>
-    <div class="nd" id="nd5" onclick="goTo(5)" title="Buscando" role="button" tabindex="0" aria-label="Ir a Buscando"></div>
-    <div class="nd" id="nd6" onclick="goTo(6)" title="Confirmado" role="button" tabindex="0" aria-label="Ir a Pasajero confirmado"></div>
-    <div class="nd" id="nd7" onclick="goTo(7)" title="Driver Alert" role="button" tabindex="0" aria-label="Ir a Alerta conductor"></div>
-    <div class="nd" id="nd8" onclick="goTo(8)" title="Driver OK" role="button" tabindex="0" aria-label="Ir a Conductor confirmado"></div>
-  </div>
-  <script>
-/* prevS/nextS stubs — must be defined before the buttons that reference them */
-function prevS(){ if(typeof goTo==='function'){ var SCREENS=window._SCREENS||[]; if(window._cur>0){ var prevId=parseInt(SCREENS[window._cur-1].id,10); goTo(prevId); } } }
-function nextS(){ if(typeof goTo==='function'){ var SCREENS=window._SCREENS||[]; if(window._cur<SCREENS.length-1){ var nextId=parseInt(SCREENS[window._cur+1].id,10); goTo(nextId); } } }
-</script>
-<div style="display:flex;gap:8px;">
-    <button class="cb" id="pb" onclick="prevS()" disabled aria-label="Pantalla anterior">← Anterior</button>
-    <button class="cb blue" id="nb" onclick="nextS()" aria-label="Siguiente pantalla">Siguiente →</button>
-  </div>
-  <div class="sdesc" id="sdesc" aria-live="polite">Elige tu rol y presiona Continuar para comenzar.</div>
-</div>
-</div><!-- /outer -->
 
 <!-- LIVE REGIONS -->
 <div id="live-r" class="sr-only" aria-live="polite" aria-atomic="true"></div>
