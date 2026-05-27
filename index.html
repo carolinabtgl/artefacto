@@ -70,7 +70,7 @@ button,a{cursor:pointer;font-family:var(--font)}
 
 /* ═══════════ SHELL ═══════════ */
 .shell{width:393px;height:852px;background:var(--surf);border-radius:44px;overflow:hidden;position:relative;box-shadow:0 40px 120px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.06)}
-.di{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:120px;height:34px;background:#000;border-radius:20px;z-index:9999}
+.di{display:none!important}
 
 /* ═══════════ SCREENS ═══════════ */
 .scr{position:absolute;inset:0;display:flex;flex-direction:column;background:var(--surf);opacity:0;pointer-events:none;transform:translateX(28px);transition:opacity .22s ease,transform .22s ease;overflow:hidden}
@@ -86,14 +86,14 @@ button,a{cursor:pointer;font-family:var(--font)}
 button:focus-visible,a:focus-visible,[role="button"]:focus-visible,[role="radio"]:focus-visible,[role="checkbox"]:focus-visible{box-shadow:var(--focus-ring);outline:none}
 
 /* ═══════════ STATUS BAR ═══════════ */
-.sbar{display:flex;justify-content:space-between;align-items:center;padding:48px 24px 0;height:56px;flex-shrink:0}
+.sbar{display:none!important;height:0!important;padding:0!important;overflow:hidden!important;flex-shrink:0}
 .sbar.lt .sbar-t,.sbar.lt .sbar-i{color:#fff}
 .sbar.dk .sbar-t,.sbar.dk .sbar-i{color:var(--on)}
 .sbar-t{font-size:15px;font-weight:700}
 .sbar-i{display:flex;gap:5px;align-items:center;font-size:12px}
 
 /* ═══════════ TOP APP BAR ═══════════ */
-.tab{display:flex;align-items:center;gap:8px;padding:8px 16px 10px;flex-shrink:0;background:var(--white);border-bottom:1px solid var(--border2)}
+.tab{display:flex;align-items:center;gap:8px;padding:env(safe-area-inset-top,12px) 16px 10px;padding-top:max(env(safe-area-inset-top,0px),12px);flex-shrink:0;background:var(--white);border-bottom:1px solid var(--border2)}
 .tab-title{font-size:var(--t-xl,1.125rem);font-weight:700;color:var(--on);flex:1}
 .tab-sub{font-size:12px;color:var(--on3);margin-top:1px}
 .ib{min-width:44px;min-height:44px;border-radius:50%;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;flex-shrink:0;color:var(--on);padding:0}
@@ -212,12 +212,11 @@ textarea.finp{resize:none;line-height:1.5}
 .lb{height:100%;background:var(--c30);border-radius:2px;animation:progress 1.4s ease-in-out infinite}
 
 /* ═══════════ MAP ═══════════ */
-.map-wrap{padding:0 20px;flex-shrink:0}
 
 /* ── MAP CANVAS (Google Maps-style) ──────────── */
-.map-wrap{padding:0 20px;flex-shrink:0}
-.map-outer{position:relative;border-radius:var(--r16);overflow:hidden;border:1.5px solid var(--border2);height:220px;background:#e8ecef;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
-#map-canvas{width:100%;height:100%;display:block;border-radius:var(--r16)}
+.map-wrap{padding:0 20px;flex-shrink:0;position:relative;z-index:1}
+.map-outer{position:relative;border-radius:var(--r16);overflow:hidden;border:1.5px solid var(--border2);height:200px;background:#e8ecef;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);flex-shrink:0}
+#map-canvas{width:100%;height:200px;display:block;border-radius:var(--r16)}
 .map-svg-overlay{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .map-empty-state{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(232,236,239,.96);border-radius:var(--r16)}
 .map-empty-icon{width:56px;height:56px;border-radius:50%;background:var(--c30xl);border:2px solid var(--c30);display:flex;align-items:center;justify-content:center}
@@ -273,7 +272,7 @@ textarea.finp{resize:none;line-height:1.5}
 /* ═══════════ HEROES ═══════════ */
 .hero-w{background:linear-gradient(150deg,var(--c30) 0%,#0a2d6e 100%);padding:0;flex-shrink:0;position:relative;overflow:hidden}
 .hero-w::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(63,92,250,.35) 0%,transparent 55%),radial-gradient(ellipse at 10% 90%,rgba(154,183,154,.25) 0%,transparent 50%)}
-.hw-in{position:relative;z-index:1;padding:50px 28px 26px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.hw-in{position:relative;z-index:1;padding:env(safe-area-inset-top,16px) 28px 26px;padding-top:max(env(safe-area-inset-top,0px),16px);display:flex;flex-direction:column;align-items:center;gap:12px}
 .logo{width:82px;height:82px;border-radius:24px;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;color:#fff;animation:bounce 3s ease-in-out infinite;box-shadow:0 8px 32px rgba(0,0,0,.3)}
 @media(prefers-reduced-motion:reduce){.logo{animation:none}}
 .app-nm{font-size:34px;font-weight:900;color:#fff;letter-spacing:-.5px}
@@ -415,10 +414,38 @@ textarea.finp{resize:none;line-height:1.5}
 .mc-error-banner svg{width:18px;height:18px;color:var(--err);flex-shrink:0;margin-top:1px}
 .mc-error-title{font-size:13px;font-weight:700;color:var(--err)}
 .mc-error-sub{font-size:12px;color:var(--on2);margin-top:2px;line-height:1.4}
-.fab-sos{position:absolute;bottom:80px;right:16px;z-index:100;background:var(--err);color:#fff;border:none;border-radius:var(--r16);padding:12px 16px;font-family:var(--font);font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:7px;box-shadow:0 4px 16px rgba(183,28,28,.4);min-height:48px;transition:all .15s}
-.fab-sos:hover{background:var(--err-on)}
-.fab-sos:active{transform:scale(.95)}
-.fab-sos svg{width:18px;height:18px}
+/* FAB SOS — icon-only circle pinned to right edge */
+.fab-sos{
+  position:absolute;
+  bottom:88px;
+  right:0;           /* flush to right edge */
+  z-index:110;
+  background:var(--err);
+  color:#fff;
+  border:none;
+  border-radius:28px 0 0 28px;  /* pill left, flat right */
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:-2px 2px 12px rgba(183,28,28,.45);
+  cursor:pointer;
+  transition:width .25s cubic-bezier(.34,1.2,.64,1), padding .25s;
+  overflow:hidden;
+  white-space:nowrap;
+  padding:0 12px 0 10px;
+}
+.fab-sos:hover,.fab-sos.expanded{
+  width:auto;
+  min-width:140px;
+  padding:0 16px 0 12px;
+  gap:7px;
+}
+.fab-sos svg{width:18px;height:18px;flex-shrink:0}
+.fab-sos-lbl{font-size:13px;font-weight:800;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap}
+.fab-sos.expanded .fab-sos-lbl{opacity:1}
+body.hc .fab-sos{background:#FF4444!important;color:#FFF!important}
 .sos-modal{position:absolute;inset:0;background:rgba(0,0,0,.5);z-index:200;display:flex;align-items:flex-end;justify-content:center;padding-bottom:20px;backdrop-filter:blur(3px)}
 .sos-sheet{background:var(--white);border-radius:var(--r24) var(--r24) 0 0;padding:20px;width:100%;max-width:393px;display:flex;flex-direction:column;gap:12px}
 .sos-title{font-size:17px;font-weight:800;color:var(--on);text-align:center}
@@ -637,6 +664,20 @@ details summary{-webkit-tap-highlight-color:transparent}
   .di,.hc-btn{display:none}.sbar{padding-top:16px}
 }
 </style>
+<script>
+/* GEO_STATE — hoisted so oninput handlers can access it before main script */
+var GEO_STATE = {
+  origin: { lat:null, lon:null, display:null, valid:false },
+  dest:   { lat:null, lon:null, display:null, valid:false },
+};
+function isValidAddrInput(val){
+  var v = val.trim();
+  if(v.length < 3) return false;
+  if(!/[a-zA-ZáéíóúñÁÉÍÓÚÑ0-9]/.test(v)) return false;
+  if(/(.){4,}/.test(v)) return false;
+  return true;
+}
+</script>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
@@ -778,8 +819,8 @@ details summary{-webkit-tap-highlight-color:transparent}
         <div class="finp-wrap">
           <div class="finp" style="display:flex;align-items:center;padding:10px 16px;" aria-label="Campo de teléfono con prefijo Colombia">
             <span class="phone-prefix" aria-label="Prefijo Colombia">🇨🇴 +57</span>
-            <input id="fp" type="tel" value="" autocomplete="tel" aria-required="true"
-              oninput="validatePhone(this);clearFieldError('fp')"
+            <input id="fp" type="tel" inputmode="numeric" pattern="[0-9\s]{7,12}" value="" autocomplete="tel" aria-required="true"
+              oninput="filterNumericPhone(this);validatePhone(this);clearFieldError('fp')"
               style="border:none;outline:none;font-family:var(--font);font-size:16px;color:var(--on);background:transparent;flex:1;min-width:0;"
               placeholder="310 000 0000"/>
           </div>
@@ -1000,7 +1041,7 @@ details summary{-webkit-tap-highlight-color:transparent}
     </div>
     <!-- Destino -->
     <div style="position:relative;">
-      <div style="display:flex;align-items:center;gap:8px;background:var(--white);border:1.5px solid var(--border2);border-top:none;border-radius:0 0 var(--r16) var(--r16);padding:10px 12px;">
+      <div style="display:flex;align-items:center;gap:8px;background:var(--white);border:2px solid var(--c30);border-top:1px solid var(--border2);border-radius:0 0 var(--r16) var(--r16);padding:10px 12px;">
         <div style="width:10px;height:10px;border-radius:50%;background:var(--ok);border:2px solid var(--ok-on);flex-shrink:0;" aria-hidden="true"></div>
         <div style="flex:1;min-width:0;">
           <div style="font-size:9px;font-weight:700;color:var(--on3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px;">Hasta</div>
@@ -1145,7 +1186,7 @@ details summary{-webkit-tap-highlight-color:transparent}
     <span id="demand-alert-txt">Alta demanda en esta estación. Te sugerimos esta ruta alternativa.</span>
   </div>
   <!-- ── Resultados (ocultos hasta buscar) ─────────── -->
-  <div class="sb" style="padding-top:8px;" id="map-results" aria-live="polite">
+  <div class="sb" style="padding-top:8px;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;" id="map-results" aria-live="polite">
 
     <!-- Estado vacío de resultados -->
     <div id="results-empty" style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 0;text-align:center;">
@@ -1282,16 +1323,20 @@ details summary{-webkit-tap-highlight-color:transparent}
     <span id="s6-band-txt">Vibración activada — te avisamos cuando el bus esté cerca</span>
   </div>
   <!-- Confirmation modal (flotante, cierra con ✕) -->
-  <div class="confirm-modal-backdrop" id="confirm-reinforce-backdrop" role="dialog" aria-modal="true" aria-label="Apoyo confirmado" aria-live="polite">
+  <div class="confirm-modal-backdrop" id="confirm-reinforce-backdrop" role="dialog" aria-modal="true" aria-label="Apoyo confirmado" aria-live="polite" style="display:none;">
     <div class="confirm-modal" id="confirm-reinforce">
       <div class="confirm-modal-icon" aria-hidden="true">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ok)" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
       </div>
-      <div style="flex:1;padding-right:20px;">
+      <div style="flex:1;padding-right:24px;">
         <div style="font-size:15px;font-weight:800;color:var(--ok);">Tu apoyo fue confirmado ✓</div>
         <div id="confirm-reinforce-sub" style="font-size:13px;color:var(--on2);margin-top:4px;font-weight:600;line-height:1.4;">Tu conductor llegará en aproximadamente <strong>3 minutos</strong>.</div>
       </div>
-      <button class="confirm-modal-close" onclick="closeConfirmModal()" aria-label="Cerrar notificación de confirmación">✕</button>
+      <button class="confirm-modal-close" onclick="closeConfirmModal()" aria-label="Cerrar notificación">✕</button>
+      <!-- Countdown bar -->
+      <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--border2);border-radius:0 0 var(--r20) var(--r20);overflow:hidden;">
+        <div id="modal-countdown" style="height:100%;background:var(--ok);width:100%;transition:width 5s linear;border-radius:inherit;"></div>
+      </div>
     </div>
   </div>
   <!-- Back button row with inline progress % at right -->
@@ -2002,9 +2047,9 @@ details summary{-webkit-tap-highlight-color:transparent}
 </div>
 
 <!-- SOS FLOATING BUTTON — screen 4 & 6 -->
-<button class="fab-sos" id="fab-sos" onclick="showSOS()" aria-label="Necesito ayuda ahora" style="display:none;">
+<button class="fab-sos" id="fab-sos" onclick="toggleFabSOS()" aria-label="Necesito ayuda — pulsa para expandir o llamar a soporte" aria-expanded="false" style="display:none;">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.09 4.16 2 2 0 0 1 5.07 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.72 2.81a2 2 0 0 1-.45 2.11L9.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.36 1.85.6 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
-  Necesito ayuda
+  <span class="fab-sos-lbl">Necesito ayuda</span>
 </button>
 
 <!-- SOS MODAL -->
@@ -2729,22 +2774,11 @@ function sendReq(){
   playNotif(); speak('Enviando solicitud de parada accesible. Por favor espera.'); ann('Solicitud enviada. Buscando conductor.'); // Show animated confirmation overlay
     
 /* ═══════════ GEOCODING (Nominatim OSM) ═══════════ */
-const GEO_STATE = {
-  origin: { lat:null, lon:null, display:null, valid:false },
-  dest:   { lat:null, lon:null, display:null, valid:false },
-};
+/* GEO_STATE hoisted to head — see inline script above */
 let geoTimers = {};
 
 // Blacklist: reject nonsense input
-function isValidAddrInput(val){
-  const v = val.trim();
-  if(v.length < 5) return false;
-  // Must contain at least one letter
-  if(!/[a-zA-ZáéíóúñÁÉÍÓÚÑ]/.test(v)) return false;
-  // No more than 2 consecutive identical chars (spam guard)
-  if(/(.){3,}/.test(v)) return false;
-  return true;
-}
+/* isValidAddrInput hoisted to head */
 
 function geocodeInput(field){
   clearTimeout(geoTimers[field]);
@@ -2924,7 +2958,64 @@ function showConfirmModal(){
   if(bd){
     bd.style.display='flex';
     bd.style.animation='fadeIn .25s ease both';
-    setTimeout(()=>closeConfirmModal(), 8000);
+    // Start countdown bar
+    const bar = document.getElementById('modal-countdown');
+    if(bar){
+      bar.style.width='100%';
+      bar.style.transition='none';
+      requestAnimationFrame(()=>{
+        requestAnimationFrame(()=>{
+          bar.style.transition='width 5s linear';
+          bar.style.width='0%';
+        });
+      });
+    }
+    setTimeout(()=>closeConfirmModal(), 5200);
+  }
+}
+
+
+/* ── Phone numeric filter ────────────────────── */
+function filterNumericPhone(el){
+  // Strip everything except digits and spaces
+  const clean = el.value.replace(/[^0-9\s]/g,'');
+  if(el.value !== clean){
+    const pos = el.selectionStart - (el.value.length - clean.length);
+    el.value = clean;
+    try{ el.setSelectionRange(pos,pos); }catch(e){}
+  }
+}
+
+/* ── FAB SOS toggle expand/collapse ─────────── */
+let fabSosExpanded = false;
+let fabSosTimer = null;
+function toggleFabSOS(){
+  const fab = document.getElementById('fab-sos');
+  if(!fab) return;
+  if(!fabSosExpanded){
+    fab.classList.add('expanded');
+    fab.setAttribute('aria-expanded','true');
+    fabSosExpanded = true;
+    // Auto-collapse after 3s if not acted on
+    clearTimeout(fabSosTimer);
+    fabSosTimer = setTimeout(()=>{
+      fab.classList.remove('expanded');
+      fab.setAttribute('aria-expanded','false');
+      fabSosExpanded = false;
+    }, 3000);
+    ann('Botón de ayuda expandido. Pulsa de nuevo para contactar soporte.');
+    // Second tap → open SOS modal
+    fab.onclick = function(){
+      if(fabSosExpanded){ showSOS(); }
+      else { toggleFabSOS(); }
+    };
+  } else {
+    clearTimeout(fabSosTimer);
+    fab.classList.remove('expanded');
+    fab.setAttribute('aria-expanded','false');
+    fabSosExpanded = false;
+    fab.onclick = toggleFabSOS;
+    showSOS();
   }
 }
 
