@@ -62,7 +62,7 @@ body.hc .cta.arriving-s{background:#0055DD !important;color:#FFFFFF !important;}
 /* ═══════════ RESET ═══════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{height:100%}
-body{font-family:var(--font);background:#0A150A;display:flex;align-items:center;justify-content:center;min-height:100vh}
+body{font-family:var(--font);background:#0A150A;display:flex;align-items:center;justify-content:center;min-height:100vh;min-height:100dvh}
 button,a{cursor:pointer;font-family:var(--font)}
 
 .skip-link{position:absolute;top:-100px;left:16px;z-index:99999;background:var(--c30);color:#fff;padding:10px 18px;border-radius:var(--r8);font-size:15px;font-weight:700;text-decoration:none}
@@ -70,6 +70,9 @@ button,a{cursor:pointer;font-family:var(--font)}
 
 /* ═══════════ SHELL ═══════════ */
 .shell{width:393px;height:852px;background:var(--surf);border-radius:44px;overflow:hidden;position:relative;box-shadow:0 40px 120px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.06)}
+@media(max-width:430px){
+  .shell{width:100vw;height:100dvh;height:100vh;border-radius:0;box-shadow:none}
+}
 .di{display:none!important}
 
 /* ═══════════ SCREENS ═══════════ */
@@ -93,7 +96,7 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,[role="radio"
 .sbar-i{display:flex;gap:5px;align-items:center;font-size:12px}
 
 /* ═══════════ TOP APP BAR ═══════════ */
-.tab{display:flex;align-items:center;gap:8px;padding:env(safe-area-inset-top,12px) 16px 10px;padding-top:max(env(safe-area-inset-top,0px),12px);flex-shrink:0;background:var(--white);border-bottom:1px solid var(--border2)}
+.tab{display:flex;align-items:center;gap:8px;padding:14px 16px 10px;flex-shrink:0;background:var(--white);border-bottom:1px solid var(--border2)}
 .tab-title{font-size:var(--t-xl,1.125rem);font-weight:700;color:var(--on);flex:1}
 .tab-sub{font-size:12px;color:var(--on3);margin-top:1px}
 .ib{min-width:44px;min-height:44px;border-radius:50%;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;flex-shrink:0;color:var(--on);padding:0}
@@ -218,7 +221,7 @@ textarea.finp{resize:none;line-height:1.5}
 .map-outer{position:relative;border-radius:var(--r16);overflow:hidden;border:1.5px solid var(--border2);height:200px;background:#e8ecef;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);flex-shrink:0}
 #map-canvas{width:100%;height:200px;display:block;border-radius:var(--r16)}
 .map-svg-overlay{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.map-empty-state{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(232,236,239,.96);border-radius:var(--r16)}
+.map-empty-state{display:none!important}
 .map-empty-icon{width:56px;height:56px;border-radius:50%;background:var(--c30xl);border:2px solid var(--c30);display:flex;align-items:center;justify-content:center}
 /* Google Maps-style attribution */
 .map-attrib{position:absolute;bottom:4px;right:6px;font-size:9px;color:rgba(0,0,0,.5);background:rgba(255,255,255,.75);padding:1px 4px;border-radius:3px;pointer-events:none}
@@ -272,7 +275,7 @@ textarea.finp{resize:none;line-height:1.5}
 /* ═══════════ HEROES ═══════════ */
 .hero-w{background:linear-gradient(150deg,var(--c30) 0%,#0a2d6e 100%);padding:0;flex-shrink:0;position:relative;overflow:hidden}
 .hero-w::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(63,92,250,.35) 0%,transparent 55%),radial-gradient(ellipse at 10% 90%,rgba(154,183,154,.25) 0%,transparent 50%)}
-.hw-in{position:relative;z-index:1;padding:env(safe-area-inset-top,16px) 28px 26px;padding-top:max(env(safe-area-inset-top,0px),16px);display:flex;flex-direction:column;align-items:center;gap:12px}
+.hw-in{position:relative;z-index:1;padding:24px 28px 26px;display:flex;flex-direction:column;align-items:center;gap:12px}
 .logo{width:82px;height:82px;border-radius:24px;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;color:#fff;animation:bounce 3s ease-in-out infinite;box-shadow:0 8px 32px rgba(0,0,0,.3)}
 @media(prefers-reduced-motion:reduce){.logo{animation:none}}
 .app-nm{font-size:34px;font-weight:900;color:#fff;letter-spacing:-.5px}
@@ -414,37 +417,44 @@ textarea.finp{resize:none;line-height:1.5}
 .mc-error-banner svg{width:18px;height:18px;color:var(--err);flex-shrink:0;margin-top:1px}
 .mc-error-title{font-size:13px;font-weight:700;color:var(--err)}
 .mc-error-sub{font-size:12px;color:var(--on2);margin-top:2px;line-height:1.4}
-/* FAB SOS — icon-only circle pinned to right edge */
+/* FAB SOS — red circle flush to right edge, expands on click */
 .fab-sos{
   position:absolute;
-  bottom:88px;
-  right:0;           /* flush to right edge */
+  bottom:90px;
+  right:0;
   z-index:110;
   background:var(--err);
   color:#fff;
   border:none;
-  border-radius:28px 0 0 28px;  /* pill left, flat right */
-  width:44px;
-  height:44px;
+  border-radius:24px 0 0 24px; /* flat on right, rounded on left */
+  width:48px;
+  height:48px;
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:-2px 2px 12px rgba(183,28,28,.45);
+  box-shadow:-3px 3px 14px rgba(183,28,28,.50);
   cursor:pointer;
-  transition:width .25s cubic-bezier(.34,1.2,.64,1), padding .25s;
   overflow:hidden;
   white-space:nowrap;
-  padding:0 12px 0 10px;
+  gap:0;
+  padding:0 0 0 10px;
+  transition:width .3s cubic-bezier(.34,1.2,.64,1), gap .3s, padding .3s;
 }
-.fab-sos:hover,.fab-sos.expanded{
+.fab-sos.expanded{
   width:auto;
-  min-width:140px;
-  padding:0 16px 0 12px;
-  gap:7px;
+  min-width:152px;
+  padding:0 18px 0 12px;
+  gap:8px;
+  border-radius:24px 0 0 24px;
 }
-.fab-sos svg{width:18px;height:18px;flex-shrink:0}
-.fab-sos-lbl{font-size:13px;font-weight:800;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap}
-.fab-sos.expanded .fab-sos-lbl{opacity:1}
+.fab-sos svg{width:20px;height:20px;flex-shrink:0}
+.fab-sos-lbl{
+  font-size:13px;font-weight:800;
+  max-width:0;overflow:hidden;
+  transition:max-width .3s cubic-bezier(.34,1.2,.64,1), opacity .25s;
+  opacity:0;pointer-events:none;
+}
+.fab-sos.expanded .fab-sos-lbl{max-width:120px;opacity:1}
 body.hc .fab-sos{background:#FF4444!important;color:#FFF!important}
 .sos-modal{position:absolute;inset:0;background:rgba(0,0,0,.5);z-index:200;display:flex;align-items:flex-end;justify-content:center;padding-bottom:20px;backdrop-filter:blur(3px)}
 .sos-sheet{background:var(--white);border-radius:var(--r24) var(--r24) 0 0;padding:20px;width:100%;max-width:393px;display:flex;flex-direction:column;gap:12px}
@@ -628,7 +638,7 @@ details summary{-webkit-tap-highlight-color:transparent}
 }
 
 /* ── GEOCODING / ADDRESS INPUT ─────────────────── */
-.addr-suggestions{
+.addr-suggestions{z-index:300;
   position:absolute;top:calc(100% + 4px);left:0;right:0;z-index:200;
   background:var(--white);border-radius:var(--r12);
   box-shadow:var(--e3);overflow:hidden;
@@ -1011,10 +1021,12 @@ function isValidAddrInput(val){
   </div>
 
   <!-- ── Inputs origen / destino con geocodificación ── -->
-  <div style="padding:4px 20px 6px;display:flex;flex-direction:column;gap:0;flex-shrink:0;">
+  <div style="padding:4px 20px 6px;display:flex;flex-direction:column;gap:0;flex-shrink:0;position:relative;z-index:10;">
+    <!-- Unified input card with complete border -->
+    <div style="border:2px solid var(--c30);border-radius:var(--r16);overflow:visible;box-shadow:0 0 0 3px rgba(22,70,140,.07);">
     <!-- Origen -->
     <div style="position:relative;">
-      <div style="display:flex;align-items:center;gap:8px;background:var(--white);border:2px solid var(--c30);border-radius:var(--r16) var(--r16) 0 0;padding:10px 12px;box-shadow:0 0 0 3px rgba(22,70,140,.07);">
+      <div style="display:flex;align-items:center;gap:8px;background:var(--white);border:none;border-radius:var(--r16) var(--r16) 0 0;padding:10px 12px;">
         <div style="width:10px;height:10px;border-radius:50%;background:var(--c30);border:2px solid var(--c30d);flex-shrink:0;" aria-hidden="true"></div>
         <div style="flex:1;min-width:0;">
           <div style="font-size:9px;font-weight:700;color:var(--on3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px;">Desde</div>
@@ -1041,7 +1053,7 @@ function isValidAddrInput(val){
     </div>
     <!-- Destino -->
     <div style="position:relative;">
-      <div style="display:flex;align-items:center;gap:8px;background:var(--white);border:2px solid var(--c30);border-top:1px solid var(--border2);border-radius:0 0 var(--r16) var(--r16);padding:10px 12px;">
+      <div style="display:flex;align-items:center;gap:8px;background:var(--white);border:none;border-top:1.5px solid var(--border2);border-radius:0 0 var(--r16) var(--r16);padding:10px 12px;">
         <div style="width:10px;height:10px;border-radius:50%;background:var(--ok);border:2px solid var(--ok-on);flex-shrink:0;" aria-hidden="true"></div>
         <div style="flex:1;min-width:0;">
           <div style="font-size:9px;font-weight:700;color:var(--on3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px;">Hasta</div>
@@ -1059,6 +1071,7 @@ function isValidAddrInput(val){
       <div id="dest-status" style="display:none;font-size:11px;padding:2px 14px 0;"></div>
       <div id="dest-suggestions" class="addr-suggestions" style="display:none;" role="listbox" aria-label="Sugerencias de destino"></div>
     </div>
+    </div><!-- /unified border wrapper -->
 
     <!-- Search CTA — active once both fields have valid geocoded addresses -->
     <button id="search-btn" class="btn btn-f btn-sm" style="width:100%;margin-top:8px;font-size:13px;opacity:.35;pointer-events:none;" onclick="startMapSearch()" aria-label="Buscar paradas accesibles para esta ruta" disabled>
@@ -1071,9 +1084,7 @@ function isValidAddrInput(val){
   <div class="map-wrap">
     <div class="map-outer" id="map-outer">
 
-      <!-- Canvas map shown immediately (Google Maps style) -->
-      <div class="map-empty-state" id="map-empty" style="background:transparent;pointer-events:none;">
-      </div>
+      <!-- No empty state — canvas draws immediately -->
 
       <!-- Canvas map (rendered programmatically, Google Maps style) -->
       <canvas id="map-canvas" style="display:none;" width="353" height="220"
@@ -1172,7 +1183,7 @@ function isValidAddrInput(val){
       </div>
 
       <!-- Badge -->
-      <div id="map-stops-badge" style="display:none;position:absolute;top:10px;left:50%;transform:translateX(-50%);background:var(--ok);color:#fff;font-size:11px;font-weight:800;padding:6px 14px;border-radius:20px;box-shadow:0 2px 8px rgba(27,94,32,.3);white-space:nowrap;" aria-live="polite">
+      <div id="map-stops-badge" style="display:none;position:absolute;top:8px;left:50%;transform:translateX(-50%);background:var(--ok);color:#fff;font-size:11px;font-weight:800;padding:5px 12px;border-radius:20px;box-shadow:0 2px 8px rgba(27,94,32,.3);white-space:nowrap;z-index:10;" aria-live="polite">
         ♿ Paradas accesibles encontradas
       </div>
       <!-- Attribution -->
@@ -2907,7 +2918,6 @@ function useMyLocation(){
 function drawMapWithCoords(){
   const canvas = document.getElementById('map-canvas');
   const svg    = document.getElementById('map-svg-overlay');
-  const empty  = document.getElementById('map-empty');
   if(!canvas) return;
 
   // Draw the base map (same Google-style canvas)
@@ -2931,8 +2941,6 @@ function drawMapWithCoords(){
 function drawMapSinglePoint(field){
   const canvas = document.getElementById('map-canvas');
   if(!canvas) return;
-  const empty = document.getElementById('map-empty');
-  if(empty) empty.style.display='none';
   // Just show base map with partial info
   const val = GEO_STATE[field].display || '';
   showMap(
@@ -3230,7 +3238,6 @@ function clearDest(){
 
 // Render Google Maps-style canvas map of Bogotá
 function showMap(origVal, destVal){
-  const empty  = document.getElementById('map-empty');
   const canvas = document.getElementById('map-canvas');
   const svg    = document.getElementById('map-svg-overlay');
   const badge  = document.getElementById('map-stops-badge');
@@ -3328,7 +3335,6 @@ function showMap(origVal, destVal){
 
   // Show canvas + SVG overlay
   canvas.style.display = 'block';
-  if(empty) empty.style.display = 'none';
   if(svg){ svg.style.display = 'block'; }
   if(badge){ badge.style.display='flex'; badge.style.alignItems='center'; }
   if(accurDot) accurDot.style.display='block';
@@ -3350,12 +3356,10 @@ function showMap(origVal, destVal){
 function hideMap(){
   const canvas = document.getElementById('map-canvas');
   const svg    = document.getElementById('map-svg-overlay');
-  const empty  = document.getElementById('map-empty');
   const badge  = document.getElementById('map-stops-badge');
   const accurDot = document.getElementById('accuracy-dot');
   if(canvas) canvas.style.display='none';
   if(svg)   svg.style.display='none';
-  if(empty) empty.style.display='flex';
   if(badge) badge.style.display='none';
   if(accurDot) accurDot.style.display='none';
 }
@@ -3630,8 +3634,7 @@ function startMapSearch(){
     // Show results, hide empty state
     const empty   = document.getElementById('results-empty');
     const loaded  = document.getElementById('results-loaded');
-    if(empty)  empty.style.display  = 'none';
-    if(loaded){ loaded.style.display = 'flex'; }
+      if(loaded){ loaded.style.display = 'flex'; }
 
     advMapStep(5);
     ann('Se encontraron ' + data.routes.length + ' rutas accesibles. Selecciona la que más te acomode y elige tu estación de abordaje.');
