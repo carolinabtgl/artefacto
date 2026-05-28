@@ -45,24 +45,13 @@ body.hc{
   background:#000 !important;
 }
 body.hc .card{background:#111;border:2px solid #555}
-body.hc .fab-sos{background:#FF4444 !important;color:#FFF !important;}
 body.hc .hero-w{background:#001540}
 body.hc .finp{background:#111;color:#fff;border-color:#888}
-
-/* HC mode CTA contrast fix */
-body.hc .cta{background:#FFFF00 !important;color:#000000 !important;box-shadow:none !important;}
-body.hc .cta .cta-tt{color:#000000 !important;}
-body.hc .cta .cta-st{color:rgba(0,0,0,.8) !important;}
-body.hc .cta .cta-ic{background:rgba(0,0,0,.15) !important;}
-body.hc .cta .cta-ic svg{stroke:#000000 !important;}
-body.hc .cta.confirmed-s{background:#00AA00 !important;color:#FFFFFF !important;}
-body.hc .cta.confirmed-s .cta-tt{color:#FFFFFF !important;}
-body.hc .cta.arriving-s{background:#0055DD !important;color:#FFFFFF !important;}
 
 /* ═══════════ RESET ═══════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{height:100%}
-body{font-family:var(--font);background:#0A150A;display:flex;align-items:center;justify-content:center;min-height:100vh;min-height:100dvh}
+body{font-family:var(--font);background:#0A150A;display:flex;align-items:center;justify-content:center;min-height:100vh}
 button,a{cursor:pointer;font-family:var(--font)}
 
 .skip-link{position:absolute;top:-100px;left:16px;z-index:99999;background:var(--c30);color:#fff;padding:10px 18px;border-radius:var(--r8);font-size:15px;font-weight:700;text-decoration:none}
@@ -70,10 +59,7 @@ button,a{cursor:pointer;font-family:var(--font)}
 
 /* ═══════════ SHELL ═══════════ */
 .shell{width:393px;height:852px;background:var(--surf);border-radius:44px;overflow:hidden;position:relative;box-shadow:0 40px 120px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.06)}
-@media(max-width:430px){
-  .shell{width:100vw;height:100dvh;height:100vh;border-radius:0;box-shadow:none}
-}
-.di{display:none!important}
+.di{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:120px;height:34px;background:#000;border-radius:20px;z-index:9999}
 
 /* ═══════════ SCREENS ═══════════ */
 .scr{position:absolute;inset:0;display:flex;flex-direction:column;background:var(--surf);opacity:0;pointer-events:none;transform:translateX(28px);transition:opacity .22s ease,transform .22s ease;overflow:hidden}
@@ -89,14 +75,14 @@ button,a{cursor:pointer;font-family:var(--font)}
 button:focus-visible,a:focus-visible,[role="button"]:focus-visible,[role="radio"]:focus-visible,[role="checkbox"]:focus-visible{box-shadow:var(--focus-ring);outline:none}
 
 /* ═══════════ STATUS BAR ═══════════ */
-.sbar{display:none!important;height:0!important;padding:0!important;overflow:hidden!important;flex-shrink:0}
+.sbar{display:flex;justify-content:space-between;align-items:center;padding:48px 24px 0;height:56px;flex-shrink:0}
 .sbar.lt .sbar-t,.sbar.lt .sbar-i{color:#fff}
 .sbar.dk .sbar-t,.sbar.dk .sbar-i{color:var(--on)}
 .sbar-t{font-size:15px;font-weight:700}
 .sbar-i{display:flex;gap:5px;align-items:center;font-size:12px}
 
 /* ═══════════ TOP APP BAR ═══════════ */
-.tab{display:flex;align-items:center;gap:8px;padding:14px 16px 10px;flex-shrink:0;background:var(--white);border-bottom:1px solid var(--border2)}
+.tab{display:flex;align-items:center;gap:8px;padding:8px 16px 10px;flex-shrink:0;background:var(--white);border-bottom:1px solid var(--border2)}
 .tab-title{font-size:var(--t-xl,1.125rem);font-weight:700;color:var(--on);flex:1}
 .tab-sub{font-size:12px;color:var(--on3);margin-top:1px}
 .ib{min-width:44px;min-height:44px;border-radius:50%;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .15s;flex-shrink:0;color:var(--on);padding:0}
@@ -215,13 +201,14 @@ textarea.finp{resize:none;line-height:1.5}
 .lb{height:100%;background:var(--c30);border-radius:2px;animation:progress 1.4s ease-in-out infinite}
 
 /* ═══════════ MAP ═══════════ */
+.map-wrap{padding:0 20px;flex-shrink:0}
 
 /* ── MAP CANVAS (Google Maps-style) ──────────── */
-.map-wrap{padding:0 20px;flex-shrink:0;position:relative;z-index:1}
-.map-outer{position:relative;border-radius:var(--r16);overflow:hidden;border:1.5px solid var(--border2);height:200px;background:#e8ecef;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);flex-shrink:0}
-#map-canvas{width:100%;height:200px;display:block;border-radius:var(--r16)}
+.map-wrap{padding:0 20px;flex-shrink:0}
+.map-outer{position:relative;border-radius:var(--r16);overflow:hidden;border:1.5px solid var(--border2);height:220px;background:#e8ecef;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+#map-canvas{width:100%;height:100%;display:block;border-radius:var(--r16)}
 .map-svg-overlay{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.map-empty-state{display:none!important}
+.map-empty-state{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(232,236,239,.96);border-radius:var(--r16)}
 .map-empty-icon{width:56px;height:56px;border-radius:50%;background:var(--c30xl);border:2px solid var(--c30);display:flex;align-items:center;justify-content:center}
 /* Google Maps-style attribution */
 .map-attrib{position:absolute;bottom:4px;right:6px;font-size:9px;color:rgba(0,0,0,.5);background:rgba(255,255,255,.75);padding:1px 4px;border-radius:3px;pointer-events:none}
@@ -275,7 +262,7 @@ textarea.finp{resize:none;line-height:1.5}
 /* ═══════════ HEROES ═══════════ */
 .hero-w{background:linear-gradient(150deg,var(--c30) 0%,#0a2d6e 100%);padding:0;flex-shrink:0;position:relative;overflow:hidden}
 .hero-w::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(63,92,250,.35) 0%,transparent 55%),radial-gradient(ellipse at 10% 90%,rgba(154,183,154,.25) 0%,transparent 50%)}
-.hw-in{position:relative;z-index:1;padding:24px 28px 26px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.hw-in{position:relative;z-index:1;padding:50px 28px 26px;display:flex;flex-direction:column;align-items:center;gap:12px}
 .logo{width:82px;height:82px;border-radius:24px;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;color:#fff;animation:bounce 3s ease-in-out infinite;box-shadow:0 8px 32px rgba(0,0,0,.3)}
 @media(prefers-reduced-motion:reduce){.logo{animation:none}}
 .app-nm{font-size:34px;font-weight:900;color:#fff;letter-spacing:-.5px}
@@ -417,45 +404,10 @@ textarea.finp{resize:none;line-height:1.5}
 .mc-error-banner svg{width:18px;height:18px;color:var(--err);flex-shrink:0;margin-top:1px}
 .mc-error-title{font-size:13px;font-weight:700;color:var(--err)}
 .mc-error-sub{font-size:12px;color:var(--on2);margin-top:2px;line-height:1.4}
-/* FAB SOS — red circle flush to right edge, expands on click */
-.fab-sos{
-  position:absolute;
-  bottom:90px;
-  right:0;
-  z-index:110;
-  background:var(--err);
-  color:#fff;
-  border:none;
-  border-radius:24px 0 0 24px; /* flat on right, rounded on left */
-  width:48px;
-  height:48px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  box-shadow:-3px 3px 14px rgba(183,28,28,.50);
-  cursor:pointer;
-  overflow:hidden;
-  white-space:nowrap;
-  gap:0;
-  padding:0 0 0 10px;
-  transition:width .3s cubic-bezier(.34,1.2,.64,1), gap .3s, padding .3s;
-}
-.fab-sos.expanded{
-  width:auto;
-  min-width:152px;
-  padding:0 18px 0 12px;
-  gap:8px;
-  border-radius:24px 0 0 24px;
-}
-.fab-sos svg{width:20px;height:20px;flex-shrink:0}
-.fab-sos-lbl{
-  font-size:13px;font-weight:800;
-  max-width:0;overflow:hidden;
-  transition:max-width .3s cubic-bezier(.34,1.2,.64,1), opacity .25s;
-  opacity:0;pointer-events:none;
-}
-.fab-sos.expanded .fab-sos-lbl{max-width:120px;opacity:1}
-body.hc .fab-sos{background:#FF4444!important;color:#FFF!important}
+.fab-sos{position:absolute;bottom:80px;right:16px;z-index:100;background:var(--err);color:#fff;border:none;border-radius:var(--r16);padding:12px 16px;font-family:var(--font);font-size:13px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:7px;box-shadow:0 4px 16px rgba(183,28,28,.4);min-height:48px;transition:all .15s}
+.fab-sos:hover{background:var(--err-on)}
+.fab-sos:active{transform:scale(.95)}
+.fab-sos svg{width:18px;height:18px}
 .sos-modal{position:absolute;inset:0;background:rgba(0,0,0,.5);z-index:200;display:flex;align-items:flex-end;justify-content:center;padding-bottom:20px;backdrop-filter:blur(3px)}
 .sos-sheet{background:var(--white);border-radius:var(--r24) var(--r24) 0 0;padding:20px;width:100%;max-width:393px;display:flex;flex-direction:column;gap:12px}
 .sos-title{font-size:17px;font-weight:800;color:var(--on);text-align:center}
@@ -596,73 +548,6 @@ details summary{-webkit-tap-highlight-color:transparent}
   font-size:var(--t-xs);font-weight:700;color:#fff;
 }
 .confirm-step.done{ background:rgba(255,255,255,.25); }
-
-/* ── CONFIRM MODAL (apoyo confirmado) ─────────────── */
-.confirm-modal-backdrop{
-  position:absolute;inset:0;z-index:600;
-  background:rgba(0,0,0,.45);
-  backdrop-filter:blur(4px);
-  display:flex;align-items:flex-start;justify-content:center;
-  padding:20px 20px 0;
-  animation:fadeIn .25s ease both;
-}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes slideDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
-.confirm-modal{
-  background:var(--white);
-  border-radius:var(--r20);
-  border-left:5px solid var(--ok);
-  padding:18px 18px 16px;
-  width:100%;
-  max-width:360px;
-  box-shadow:0 8px 32px rgba(0,0,0,.22),0 2px 8px rgba(0,0,0,.12);
-  position:relative;
-  animation:slideDown .32s cubic-bezier(.34,1.2,.64,1) both;
-  display:flex;align-items:flex-start;gap:12px;
-}
-.confirm-modal-close{
-  position:absolute;top:10px;right:10px;
-  width:28px;height:28px;border-radius:50%;
-  border:none;background:var(--surf2);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;color:var(--on3);font-size:14px;
-  transition:background .15s;
-  flex-shrink:0;
-}
-.confirm-modal-close:hover{background:var(--surf3);}
-.confirm-modal-icon{
-  width:40px;height:40px;border-radius:50%;
-  background:var(--okl);
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-}
-
-/* ── GEOCODING / ADDRESS INPUT ─────────────────── */
-.addr-suggestions{z-index:300;
-  position:absolute;top:calc(100% + 4px);left:0;right:0;z-index:200;
-  background:var(--white);border-radius:var(--r12);
-  box-shadow:var(--e3);overflow:hidden;
-  border:1px solid var(--border2);
-  max-height:180px;overflow-y:auto;
-}
-.addr-suggestion{
-  padding:11px 14px;font-size:13px;font-weight:600;color:var(--on);
-  cursor:pointer;display:flex;align-items:center;gap:8px;
-  border-bottom:1px solid var(--border2);
-  transition:background .1s;
-}
-.addr-suggestion:last-child{border-bottom:none;}
-.addr-suggestion:hover,.addr-suggestion:focus{background:var(--c30xl);outline:none;}
-.addr-suggestion svg{flex-shrink:0;color:var(--c30d);}
-.geo-btn{
-  border:none;background:transparent;cursor:pointer;
-  padding:4px;display:flex;align-items:center;justify-content:center;
-  color:var(--c30d);transition:color .15s;
-  min-width:32px;min-height:32px;border-radius:50%;
-}
-.geo-btn:hover{background:var(--c30xl);}
-.addr-error{font-size:11px;color:var(--err);padding:4px 0;font-weight:600;}
-.addr-loading{font-size:11px;color:var(--on3);padding:4px 0;font-style:italic;}
 /* ═══════════ HC TOGGLE BTN ═══════════ */
 .hc-btn{position:absolute;top:14px;right:14px;z-index:9998;background:rgba(0,0,0,.55);border:2px solid rgba(255,255,255,.3);border-radius:var(--rFull);padding:6px 12px;color:#fff;font-size:11px;font-weight:700;cursor:pointer;font-family:var(--font);display:flex;align-items:center;gap:4px;min-height:36px}
 .hc-btn:hover{background:rgba(0,0,0,.8)}
@@ -674,20 +559,6 @@ details summary{-webkit-tap-highlight-color:transparent}
   .di,.hc-btn{display:none}.sbar{padding-top:16px}
 }
 </style>
-<script>
-/* GEO_STATE — hoisted so oninput handlers can access it before main script */
-var GEO_STATE = {
-  origin: { lat:null, lon:null, display:null, valid:false },
-  dest:   { lat:null, lon:null, display:null, valid:false },
-};
-function isValidAddrInput(val){
-  var v = val.trim();
-  if(v.length < 3) return false;
-  if(!/[a-zA-ZáéíóúñÁÉÍÓÚÑ0-9]/.test(v)) return false;
-  if(/(.){4,}/.test(v)) return false;
-  return true;
-}
-</script>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
@@ -829,8 +700,8 @@ function isValidAddrInput(val){
         <div class="finp-wrap">
           <div class="finp" style="display:flex;align-items:center;padding:10px 16px;" aria-label="Campo de teléfono con prefijo Colombia">
             <span class="phone-prefix" aria-label="Prefijo Colombia">🇨🇴 +57</span>
-            <input id="fp" type="tel" inputmode="numeric" pattern="[0-9\s]{7,12}" value="" autocomplete="tel" aria-required="true"
-              oninput="filterNumericPhone(this);validatePhone(this);clearFieldError('fp')"
+            <input id="fp" type="tel" value="" autocomplete="tel" aria-required="true"
+              oninput="validatePhone(this);clearFieldError('fp')"
               style="border:none;outline:none;font-family:var(--font);font-size:16px;color:var(--on);background:transparent;flex:1;min-width:0;"
               placeholder="310 000 0000"/>
           </div>
@@ -1020,61 +891,49 @@ function isValidAddrInput(val){
     <div class="msb-item" role="listitem"><div class="msb-dot" id="msb-d5">5</div><div class="msb-lbl">Ruta</div></div>
   </div>
 
-  <!-- ── Inputs origen / destino con geocodificación ── -->
-  <div style="padding:4px 20px 6px;display:flex;flex-direction:column;gap:0;flex-shrink:0;position:relative;z-index:10;">
-    <!-- Unified input card with complete border -->
-    <div style="border:2px solid var(--c30);border-radius:var(--r16);overflow:visible;box-shadow:0 0 0 3px rgba(22,70,140,.07);">
+  <!-- ── Inputs origen / destino ───────────────────── -->
+  <div style="padding:4px 20px 6px;display:flex;flex-direction:column;gap:0;flex-shrink:0;">
     <!-- Origen -->
-    <div style="position:relative;">
-      <div style="display:flex;align-items:center;gap:8px;background:var(--white);border:none;border-radius:var(--r16) var(--r16) 0 0;padding:10px 12px;">
-        <div style="width:10px;height:10px;border-radius:50%;background:var(--c30);border:2px solid var(--c30d);flex-shrink:0;" aria-hidden="true"></div>
-        <div style="flex:1;min-width:0;">
-          <div style="font-size:9px;font-weight:700;color:var(--on3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px;">Desde</div>
-          <input id="inp-origin" type="text" value="" autocomplete="off"
-            aria-label="Origen: escribe una dirección en Bogotá" aria-autocomplete="list" aria-controls="origin-suggestions"
-            placeholder="Ej: Cra 7 con Cl 45, Bogotá"
-            style="border:none;outline:none;font-family:var(--font);font-size:14px;font-weight:600;color:var(--on);background:transparent;width:100%;"
-            oninput="geocodeInput('origin');onOriginChange();"
-            onkeydown="handleAddrKey(event,'origin')"/>
-        </div>
-        <button class="geo-btn" onclick="useMyLocation()" aria-label="Usar mi ubicación actual">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M1 12h4M19 12h4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-        </button>
-        <button onclick="clearOrigin()" aria-label="Borrar origen" style="border:none;background:transparent;color:var(--on3);cursor:pointer;padding:4px;display:flex;align-items:center;min-width:28px;min-height:28px;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
+    <div style="display:flex;align-items:center;gap:10px;background:var(--white);border:2px solid var(--c30);border-radius:var(--r16) var(--r16) 0 0;padding:10px 14px;box-shadow:0 0 0 3px rgba(22,70,140,.07);">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:2px;" aria-hidden="true">
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--c30);border:2px solid var(--c30d);"></div>
       </div>
-      <div id="origin-status" style="display:none;font-size:11px;padding:2px 14px 0;"></div>
-      <div id="origin-suggestions" class="addr-suggestions" style="display:none;" role="listbox" aria-label="Sugerencias de origen"></div>
+      <div style="flex:1;min-width:0;">
+        <div style="font-size:9px;font-weight:700;color:var(--on3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px;">Desde</div>
+        <input id="inp-origin" type="text" value=""
+          aria-label="Campo de texto: Punto de origen o parada de salida. Requerido"
+          placeholder="Tu parada de salida..."
+          style="border:none;outline:none;font-family:var(--font);font-size:14px;font-weight:600;color:var(--on);background:transparent;width:100%;"
+          oninput="onOriginChange()" onkeydown="if(event.key==='Enter'){document.getElementById('inp-dest').focus();mapStepOriginDone();}"/>
+      </div>
+      <button onclick="clearOrigin()" aria-label="Borrar origen" style="border:none;background:transparent;color:var(--on3);cursor:pointer;padding:4px;display:flex;align-items:center;min-width:28px;min-height:28px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
     </div>
     <!-- Connector visual -->
     <div style="display:flex;align-items:stretch;padding:0 22px;background:var(--white);border-left:2px solid var(--c30);border-right:2px solid var(--border2);" aria-hidden="true">
       <div style="width:1px;height:12px;background:var(--border2);margin-left:3px;"></div>
     </div>
     <!-- Destino -->
-    <div style="position:relative;">
-      <div style="display:flex;align-items:center;gap:8px;background:var(--white);border:none;border-top:1.5px solid var(--border2);border-radius:0 0 var(--r16) var(--r16);padding:10px 12px;">
-        <div style="width:10px;height:10px;border-radius:50%;background:var(--ok);border:2px solid var(--ok-on);flex-shrink:0;" aria-hidden="true"></div>
-        <div style="flex:1;min-width:0;">
-          <div style="font-size:9px;font-weight:700;color:var(--on3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px;">Hasta</div>
-          <input id="inp-dest" type="text" value="" autocomplete="off"
-            aria-label="Destino: escribe una dirección en Bogotá" aria-autocomplete="list" aria-controls="dest-suggestions"
-            placeholder="Ej: Hospital de Kennedy"
-            style="border:none;outline:none;font-family:var(--font);font-size:14px;font-weight:600;color:var(--on);background:transparent;width:100%;"
-            oninput="geocodeInput('dest');onDestChange();"
-            onkeydown="handleAddrKey(event,'dest')"/>
-        </div>
-        <button onclick="clearDest()" aria-label="Borrar destino" style="border:none;background:transparent;color:var(--on3);cursor:pointer;padding:4px;display:flex;align-items:center;min-width:28px;min-height:28px;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
+    <div style="display:flex;align-items:center;gap:10px;background:var(--white);border:1.5px solid var(--border2);border-top:none;border-radius:0 0 var(--r16) var(--r16);padding:10px 14px;">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:2px;" aria-hidden="true">
+        <div style="width:10px;height:10px;border-radius:50%;background:var(--ok);border:2px solid var(--ok-on);"></div>
       </div>
-      <div id="dest-status" style="display:none;font-size:11px;padding:2px 14px 0;"></div>
-      <div id="dest-suggestions" class="addr-suggestions" style="display:none;" role="listbox" aria-label="Sugerencias de destino"></div>
+      <div style="flex:1;min-width:0;">
+        <div style="font-size:9px;font-weight:700;color:var(--on3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px;">Hasta</div>
+        <input id="inp-dest" type="text" value=""
+          aria-label="Campo de texto: Destino al que vas. Requerido para buscar paradas"
+          placeholder="¿A dónde vas?"
+          style="border:none;outline:none;font-family:var(--font);font-size:14px;font-weight:600;color:var(--on);background:transparent;width:100%;"
+          oninput="onDestChange()" onkeydown="if(event.key==='Enter'){startMapSearch();}"/>
+      </div>
+      <button onclick="clearDest()" aria-label="Borrar destino" style="border:none;background:transparent;color:var(--on3);cursor:pointer;padding:4px;display:flex;align-items:center;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
     </div>
-    </div><!-- /unified border wrapper -->
 
-    <!-- Search CTA — active once both fields have valid geocoded addresses -->
-    <button id="search-btn" class="btn btn-f btn-sm" style="width:100%;margin-top:8px;font-size:13px;opacity:.35;pointer-events:none;" onclick="startMapSearch()" aria-label="Buscar paradas accesibles para esta ruta" disabled>
+    <!-- Search CTA — active once destino has text -->
+    <button id="search-btn" class="btn btn-f btn-sm" style="width:100%;margin-top:8px;font-size:13px;opacity:.35;pointer-events:none;" onclick="startMapSearch()" aria-label="Botón: Buscar paradas accesibles. Activo cuando origen y destino están completos" disabled>
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       Buscar paradas accesibles
     </button>
@@ -1084,7 +943,14 @@ function isValidAddrInput(val){
   <div class="map-wrap">
     <div class="map-outer" id="map-outer">
 
-      <!-- No empty state — canvas draws immediately -->
+      <!-- Estado vacío (antes de buscar) -->
+      <div class="map-empty-state" id="map-empty">
+        <div class="map-empty-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--c30d)" stroke-width="2" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+        </div>
+        <div style="font-size:13px;font-weight:700;color:var(--c30d);">Ingresa origen y destino</div>
+        <div style="font-size:11px;color:var(--on3);text-align:center;max-width:180px;line-height:1.4;">El mapa mostrará las paradas accesibles en tu ruta</div>
+      </div>
 
       <!-- Canvas map (rendered programmatically, Google Maps style) -->
       <canvas id="map-canvas" style="display:none;" width="353" height="220"
@@ -1183,7 +1049,7 @@ function isValidAddrInput(val){
       </div>
 
       <!-- Badge -->
-      <div id="map-stops-badge" style="display:none;position:absolute;top:8px;left:50%;transform:translateX(-50%);background:var(--ok);color:#fff;font-size:11px;font-weight:800;padding:5px 12px;border-radius:20px;box-shadow:0 2px 8px rgba(27,94,32,.3);white-space:nowrap;z-index:10;" aria-live="polite">
+      <div id="map-stops-badge" style="display:none;position:absolute;top:10px;left:50%;transform:translateX(-50%);background:var(--ok);color:#fff;font-size:11px;font-weight:800;padding:6px 14px;border-radius:20px;box-shadow:0 2px 8px rgba(27,94,32,.3);white-space:nowrap;" aria-live="polite">
         ♿ Paradas accesibles encontradas
       </div>
       <!-- Attribution -->
@@ -1197,7 +1063,7 @@ function isValidAddrInput(val){
     <span id="demand-alert-txt">Alta demanda en esta estación. Te sugerimos esta ruta alternativa.</span>
   </div>
   <!-- ── Resultados (ocultos hasta buscar) ─────────── -->
-  <div class="sb" style="padding-top:8px;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;" id="map-results" aria-live="polite">
+  <div class="sb" style="padding-top:8px;" id="map-results" aria-live="polite">
 
     <!-- Estado vacío de resultados -->
     <div id="results-empty" style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px 0;text-align:center;">
@@ -1305,13 +1171,11 @@ function isValidAddrInput(val){
       <div style="font-size:14px;color:var(--on2);margin-top:6px;" aria-live="polite" id="stxt">Conectando con la red…</div>
     </div>
     <div class="card" style="width:100%;text-align:left;">
-      <div class="ir"><div class="ir-ic" style="background:var(--c60xl);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--c60d)" stroke-width="2" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg></div><div><div class="ir-lbl">Origen</div><div class="ir-val" id="s5-origin">—</div></div></div>
+      <div class="ir"><div class="ir-ic" style="background:var(--c60xl);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--c60d)" stroke-width="2" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg></div><div><div class="ir-lbl">Parada seleccionada</div><div class="ir-val">Carrera 7 × Calle 45</div></div></div>
       <div class="div-pad" style="margin:6px -18px"></div>
-      <div class="ir"><div class="ir-ic" style="background:var(--okl);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ok)" stroke-width="2" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div><div><div class="ir-lbl">Destino</div><div class="ir-val" id="s5-dest">—</div></div></div>
+      <div class="ir"><div class="ir-ic" style="background:var(--c30xl);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--c30d)" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="13" rx="2"/></svg></div><div><div class="ir-lbl">Línea</div><div class="ir-val">12-B · Norte</div></div></div>
       <div class="div-pad" style="margin:6px -18px"></div>
-      <div class="ir"><div class="ir-ic" style="background:var(--c30xl);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--c30d)" stroke-width="2" aria-hidden="true"><rect x="2" y="7" width="20" height="13" rx="2"/></svg></div><div><div class="ir-lbl">Ruta</div><div class="ir-val" id="s5-route">—</div></div></div>
-      <div class="div-pad" style="margin:6px -18px"></div>
-      <div class="ir"><div class="ir-ic" style="background:var(--c30xl);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--c30d)" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></div><div><div class="ir-lbl">Asistencia</div><div class="ir-val" id="s5-assist">—</div></div></div>
+      <div class="ir"><div class="ir-ic" style="background:var(--c30xl);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--c30d)" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></div><div><div class="ir-lbl">Asistencia</div><div class="ir-val" id="s5-assist">Silla de ruedas · Rampa</div></div></div>
     </div>
     <div style="display:flex;align-items:center;gap:10px;color:var(--on3);font-size:13px;font-weight:600;">
       <div class="spin dk"></div><span>Procesando solicitud…</span>
@@ -1333,21 +1197,12 @@ function isValidAddrInput(val){
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" aria-hidden="true"><path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3z"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
     <span id="s6-band-txt">Vibración activada — te avisamos cuando el bus esté cerca</span>
   </div>
-  <!-- Confirmation modal (flotante, cierra con ✕) -->
-  <div class="confirm-modal-backdrop" id="confirm-reinforce-backdrop" role="dialog" aria-modal="true" aria-label="Apoyo confirmado" aria-live="polite" style="display:none;">
-    <div class="confirm-modal" id="confirm-reinforce">
-      <div class="confirm-modal-icon" aria-hidden="true">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ok)" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-      </div>
-      <div style="flex:1;padding-right:24px;">
-        <div style="font-size:15px;font-weight:800;color:var(--ok);">Tu apoyo fue confirmado ✓</div>
-        <div id="confirm-reinforce-sub" style="font-size:13px;color:var(--on2);margin-top:4px;font-weight:600;line-height:1.4;">Tu conductor llegará en aproximadamente <strong>3 minutos</strong>.</div>
-      </div>
-      <button class="confirm-modal-close" onclick="closeConfirmModal()" aria-label="Cerrar notificación">✕</button>
-      <!-- Countdown bar -->
-      <div style="position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--border2);border-radius:0 0 var(--r20) var(--r20);overflow:hidden;">
-        <div id="modal-countdown" style="height:100%;background:var(--ok);width:100%;transition:width 5s linear;border-radius:inherit;"></div>
-      </div>
+  <!-- Confirmation Bias: positive reinforcement -->
+  <div class="confirm-card" id="confirm-reinforce" style="margin:6px 20px 0;flex-shrink:0;" role="status" aria-live="polite">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ok)" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <div>
+      <div style="font-size:15px;font-weight:800;color:var(--ok);">Tu apoyo fue confirmado ✓</div>
+      <div id="confirm-reinforce-sub" style="font-size:12px;color:var(--on2);margin-top:3px;font-weight:600;">Tu conductor llegará en aproximadamente <strong>3 minutos</strong>.</div>
     </div>
   </div>
   <!-- Back button row with inline progress % at right -->
@@ -2058,9 +1913,9 @@ function isValidAddrInput(val){
 </div>
 
 <!-- SOS FLOATING BUTTON — screen 4 & 6 -->
-<button class="fab-sos" id="fab-sos" onclick="toggleFabSOS()" aria-label="Necesito ayuda — pulsa para expandir o llamar a soporte" aria-expanded="false" style="display:none;">
+<button class="fab-sos" id="fab-sos" onclick="showSOS()" aria-label="Necesito ayuda ahora" style="display:none;">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.09 4.16 2 2 0 0 1 5.07 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.72 2.81a2 2 0 0 1-.45 2.11L9.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.36 1.85.6 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
-  <span class="fab-sos-lbl">Necesito ayuda</span>
+  Necesito ayuda
 </button>
 
 <!-- SOS MODAL -->
@@ -2554,25 +2409,14 @@ function updateProgressBar(id, override_pct) {
 function onEnter(id){
   const n=String(id);
   if(n==='5'){ startSearch(); ann('Buscando conductor, por favor espera.'); }
-  if(n==='6'){ startETA(); onConfirm(); setTimeout(showConfirmModal, 400); }
+  if(n==='6'){ startETA(); onConfirm(); }
   if(n==='7'){ resetSlide(); startDTimer(); playAlert(); speak('Alerta. Nueva solicitud accesible en Carrera 7 con Calle 45.'); ann('Nueva solicitud accesible recibida.',true); }
   if(n==='8'){ playSuccess(); speak('Solicitud confirmada.'); ann('Solicitud confirmada.'); }
   if(id==='boarding-pass'){ playNotif(); speak('¿Ya estás en el bus? Confirma tu abordaje.'); ann('Confirma si ya subiste al bus.'); }
   if(id==='boarding-driver'){ playNotif(); ann('Confirma el abordaje de la pasajera.'); updateDriverRequestCard(); }
   if(id==='rating'){ playBig(); speak('¡Excelente! El servicio terminó. Por favor califica tu experiencia.'); ann('Servicio completado. Por favor califica.'); }
   if(id==='hist'||id==='perf'){ playClick(); if(id==='perf') updateProfileDisplay(); }
-  if(n==='4'){
-    updateSearchBtn();
-    // Always draw base map immediately on S4 entry
-    setTimeout(()=>{
-      const cv = document.getElementById('map-canvas');
-      if(cv && cv.style.display==='none'){
-        showMap('Bogotá', '');
-        const badge = document.getElementById('map-stops-badge');
-        if(badge) badge.style.display='none'; // hide badge until search
-      }
-    }, 100);
-  }
+  if(n==='4'){ /* Map init on demand via startMapSearch */ updateSearchBtn(); }
   if(n==='3'){ applySmartDefault(); }
   if(id==='driver-perf'){ playClick(); updateDriverRequestCard(); }
   if(id==='terms'||id==='privacy'){ playClick(); ann(id==='terms'?'Términos de uso':'Política de privacidad y Ley 1581'); }
@@ -2783,251 +2627,7 @@ function sendReq(){
   btn.querySelector('.cta-tt').textContent='Buscando apoyo…';
   btn.querySelector('.cta-st').textContent='Conectando con operadores disponibles…';
   playNotif(); speak('Enviando solicitud de parada accesible. Por favor espera.'); ann('Solicitud enviada. Buscando conductor.'); // Show animated confirmation overlay
-    
-/* ═══════════ GEOCODING (Nominatim OSM) ═══════════ */
-/* GEO_STATE hoisted to head — see inline script above */
-let geoTimers = {};
-
-// Blacklist: reject nonsense input
-/* isValidAddrInput hoisted to head */
-
-function geocodeInput(field){
-  clearTimeout(geoTimers[field]);
-  const inp   = document.getElementById('inp-' + field);
-  const sugg  = document.getElementById(field + '-suggestions');
-  const stat  = document.getElementById(field + '-status');
-  if(!inp) return;
-  const val = inp.value.trim();
-  GEO_STATE[field].valid = false;
-  updateSearchBtn();
-
-  if(sugg){ sugg.style.display='none'; sugg.innerHTML=''; }
-  if(!val){ return; }
-
-  if(!isValidAddrInput(val)){
-    if(stat){ stat.style.display='block'; stat.style.color='var(--err)'; stat.textContent='⚠ Ingresa una dirección válida de Bogotá'; }
-    return;
-  }
-  if(stat){ stat.style.display='block'; stat.style.color='var(--on3)'; stat.textContent='Buscando…'; }
-
-  geoTimers[field] = setTimeout(()=>fetchGeoSuggestions(field, val), 450);
-}
-
-async function fetchGeoSuggestions(field, query){
-  const stat = document.getElementById(field + '-status');
-  const sugg = document.getElementById(field + '-suggestions');
-  try{
-    // Restrict to Bogotá/Colombia
-    const q = encodeURIComponent(query + ', Bogotá, Colombia');
-    const url = `https://nominatim.openstreetmap.org/search?q=${q}&format=json&limit=5&countrycodes=co&bounded=1&viewbox=-74.22,4.46,-73.99,4.84&addressdetails=1`;
-    const res = await fetch(url, { headers:{'Accept-Language':'es','User-Agent':'SubeContigo/1.0'} });
-    const data = await res.json();
-
-    if(!data || data.length === 0){
-      if(stat){ stat.style.color='var(--err)'; stat.textContent='No se encontró esta dirección en Bogotá.'; }
-      return;
-    }
-    if(stat){ stat.style.display='none'; }
-    if(sugg){
-      sugg.innerHTML = data.slice(0,5).map((item,i)=>{
-        const name = item.display_name.replace(', Colombia','').replace(', Bogotá','').split(',').slice(0,3).join(', ');
-        return `<div class="addr-suggestion" role="option" tabindex="0"
-          onclick="selectAddress('${field}',${item.lat},${item.lon},'${name.replace(/'/g,'\'')}')"
-          onkeydown="if(event.key==='Enter')selectAddress('${field}',${item.lat},${item.lon},'${name.replace(/'/g,'\'')}')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--c30d)" stroke-width="2" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
-          <span>${name}</span>
-        </div>`;
-      }).join('');
-      sugg.style.display = 'block';
-    }
-  } catch(e){
-    if(stat){ stat.style.color='var(--err)'; stat.textContent='Error al buscar. Verifica tu conexión.'; }
-  }
-}
-
-function selectAddress(field, lat, lon, display){
-  const inp  = document.getElementById('inp-' + field);
-  const sugg = document.getElementById(field + '-suggestions');
-  const stat = document.getElementById(field + '-status');
-  if(inp)  inp.value = display;
-  if(sugg){ sugg.style.display='none'; sugg.innerHTML=''; }
-  if(stat){ stat.style.display='none'; }
-  GEO_STATE[field] = { lat:parseFloat(lat), lon:parseFloat(lon), display, valid:true };
-  if(field==='origin') mapStepOriginDone();
-  updateSearchBtn();
-  // Update map to show the selected point
-  if(GEO_STATE.origin.valid && GEO_STATE.dest.valid){
-    drawMapWithCoords();
-  } else if(GEO_STATE[field].valid){
-    drawMapSinglePoint(field);
-  }
-  ann((field==='origin'?'Origen':'Destino') + ' seleccionado: ' + display);
-}
-
-function handleAddrKey(e, field){
-  const sugg = document.getElementById(field + '-suggestions');
-  if(!sugg || sugg.style.display==='none') return;
-  const items = sugg.querySelectorAll('.addr-suggestion');
-  const focused = sugg.querySelector('.addr-suggestion:focus');
-  const idx = Array.from(items).indexOf(focused);
-  if(e.key === 'ArrowDown'){
-    e.preventDefault();
-    (items[idx+1] || items[0])?.focus();
-  } else if(e.key === 'ArrowUp'){
-    e.preventDefault();
-    (items[idx-1] || items[items.length-1])?.focus();
-  } else if(e.key === 'Escape'){
-    sugg.style.display = 'none';
-    document.getElementById('inp-'+field)?.focus();
-  }
-}
-
-function useMyLocation(){
-  if(!navigator.geolocation){
-    ann('La geolocalización no está disponible en este dispositivo.', true);
-    return;
-  }
-  const stat = document.getElementById('origin-status');
-  if(stat){ stat.style.display='block'; stat.style.color='var(--on3)'; stat.textContent='Obteniendo tu ubicación…'; }
-  ann('Obteniendo tu ubicación GPS…');
-  navigator.geolocation.getCurrentPosition(
-    async (pos)=>{
-      const {latitude:lat, longitude:lon} = pos.coords;
-      try{
-        const url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&accept-language=es`;
-        const res = await fetch(url, {headers:{'User-Agent':'SubeContigo/1.0'}});
-        const data = await res.json();
-        const display = (data.address?.road || data.address?.pedestrian || 'Tu ubicación') +
-          (data.address?.suburb ? ', ' + data.address.suburb : '');
-        selectAddress('origin', lat, lon, display);
-        if(stat) stat.style.display='none';
-      } catch(e){
-        selectAddress('origin', lat, lon, 'Mi ubicación actual');
-        if(stat) stat.style.display='none';
-      }
-    },
-    (err)=>{
-      if(stat){ stat.style.color='var(--err)'; stat.textContent='No se pudo obtener tu ubicación. Permite el acceso GPS.'; }
-      ann('No se pudo obtener la ubicación. Por favor permite el acceso GPS.', true);
-    },
-    {timeout:8000, enableHighAccuracy:true}
-  );
-}
-
-/* ═══ MAP: draw with real geocoded coordinates ══════════════ */
-function drawMapWithCoords(){
-  const canvas = document.getElementById('map-canvas');
-  const svg    = document.getElementById('map-svg-overlay');
-  if(!canvas) return;
-
-  // Draw the base map (same Google-style canvas)
-  showMap(
-    GEO_STATE.origin.display || document.getElementById('inp-origin')?.value || '',
-    GEO_STATE.dest.display   || document.getElementById('inp-dest')?.value   || ''
-  );
-
-  // Update SVG label texts with real addresses
-  const lblO = document.getElementById('txt-origin');
-  const lblD = document.getElementById('txt-dest');
-  const shortName = (s) => s ? (s.length > 16 ? s.substring(0,15)+'…' : s) : '';
-  if(lblO) lblO.textContent = shortName(GEO_STATE.origin.display);
-  if(lblD) lblD.textContent = shortName(GEO_STATE.dest.display);
-
-  // Show badge
-  const badge = document.getElementById('map-stops-badge');
-  if(badge) badge.style.display='flex';
-}
-
-function drawMapSinglePoint(field){
-  const canvas = document.getElementById('map-canvas');
-  if(!canvas) return;
-  // Just show base map with partial info
-  const val = GEO_STATE[field].display || '';
-  showMap(
-    field==='origin' ? val : (document.getElementById('inp-origin')?.value || ''),
-    field==='dest'   ? val : (document.getElementById('inp-dest')?.value   || '')
-  );
-}
-
-/* ═══════════ CONFIRMATION MODAL CONTROL ═══════════ */
-function closeConfirmModal(){
-  const bd = document.getElementById('confirm-reinforce-backdrop');
-  if(bd){
-    bd.style.animation='fadeIn .2s ease reverse both';
-    setTimeout(()=>{ bd.style.display='none'; }, 200);
-  }
-  playClick();
-  ann('Notificación cerrada.');
-}
-
-// Auto-close after 8s if user doesn't close manually
-function showConfirmModal(){
-  const bd = document.getElementById('confirm-reinforce-backdrop');
-  if(bd){
-    bd.style.display='flex';
-    bd.style.animation='fadeIn .25s ease both';
-    // Start countdown bar
-    const bar = document.getElementById('modal-countdown');
-    if(bar){
-      bar.style.width='100%';
-      bar.style.transition='none';
-      requestAnimationFrame(()=>{
-        requestAnimationFrame(()=>{
-          bar.style.transition='width 5s linear';
-          bar.style.width='0%';
-        });
-      });
-    }
-    setTimeout(()=>closeConfirmModal(), 5200);
-  }
-}
-
-
-/* ── Phone numeric filter ────────────────────── */
-function filterNumericPhone(el){
-  // Strip everything except digits and spaces
-  const clean = el.value.replace(/[^0-9\s]/g,'');
-  if(el.value !== clean){
-    const pos = el.selectionStart - (el.value.length - clean.length);
-    el.value = clean;
-    try{ el.setSelectionRange(pos,pos); }catch(e){}
-  }
-}
-
-/* ── FAB SOS toggle expand/collapse ─────────── */
-let fabSosExpanded = false;
-let fabSosTimer = null;
-function toggleFabSOS(){
-  const fab = document.getElementById('fab-sos');
-  if(!fab) return;
-  if(!fabSosExpanded){
-    fab.classList.add('expanded');
-    fab.setAttribute('aria-expanded','true');
-    fabSosExpanded = true;
-    // Auto-collapse after 3s if not acted on
-    clearTimeout(fabSosTimer);
-    fabSosTimer = setTimeout(()=>{
-      fab.classList.remove('expanded');
-      fab.setAttribute('aria-expanded','false');
-      fabSosExpanded = false;
-    }, 3000);
-    ann('Botón de ayuda expandido. Pulsa de nuevo para contactar soporte.');
-    // Second tap → open SOS modal
-    fab.onclick = function(){
-      if(fabSosExpanded){ showSOS(); }
-      else { toggleFabSOS(); }
-    };
-  } else {
-    clearTimeout(fabSosTimer);
-    fab.classList.remove('expanded');
-    fab.setAttribute('aria-expanded','false');
-    fabSosExpanded = false;
-    fab.onclick = toggleFabSOS;
-    showSOS();
-  }
-}
-
-(function(){
+    (function(){
       const ov2 = document.getElementById('confirm-overlay');
       if(ov2){
         ov2.style.display='flex';
@@ -3038,39 +2638,10 @@ function toggleFabSOS(){
 
 /* ═══════════ SEARCH ═══════════ */
 function startSearch(){
-  // Populate S5 summary from current selections
-  const orig = document.getElementById('inp-origin');
-  const dest = document.getElementById('inp-dest');
-  const s5o  = document.getElementById('s5-origin');
-  const s5d  = document.getElementById('s5-dest');
-  const s5r  = document.getElementById('s5-route');
-  if(s5o && orig) s5o.textContent = orig.value.trim() || 'Origen no especificado';
-  if(s5d && dest) s5d.textContent = dest.value.trim() || 'Destino no especificado';
-  // Route from selected route card
-  const selRoute = document.querySelector('.route-card.sel-r');
-  if(s5r){
-    if(selRoute){
-      const rname = selRoute.querySelector('[style*="font-weight:700"]');
-      s5r.textContent = rname ? rname.textContent.trim() : 'Ruta seleccionada';
-    } else {
-      s5r.textContent = 'Pendiente de selección';
-    }
-  }
   const msgs=['Buscando apoyo disponible…','Verificando paradas accesibles…','Conectando con operador…','Operador asignado — preparando asistencia…','¡Ayuda en camino! Tu conductor está cerca.'];
   const headlines=['Buscando apoyo…','Verificando paradas…','Conectando con operador…','Operador asignado…','¡Ayuda en camino!'];
   let i=0; clearInterval(timers.search);
-  const sa=document.getElementById('s5-assist'); if(sa){
-    const p=[];
-    if(STATE.wheel) p.push('♿ Silla de ruedas');
-    if(STATE.cane)  p.push('🦯 Bastón');
-    if(STATE.vis)   p.push('👁 Visual');
-    if(STATE.hear)  p.push('🦻 Auditiva');
-    // Also check chips if STATE not yet synced
-    if(!p.length){
-      document.querySelectorAll('.ac.sel .ac-lbl').forEach(l=>p.push(l.textContent.replace('\n',' ').trim()));
-    }
-    sa.textContent = p.length ? p.join(' · ') : 'Sin asistencia seleccionada';
-  }
+  const sa=document.getElementById('s5-assist'); if(sa){ const p=[]; if(STATE.wheel)p.push('Silla de ruedas · Rampa'); if(STATE.cane)p.push('Bastón'); if(STATE.vis)p.push('Audio'); if(STATE.hear&&!STATE.wheel&&!STATE.cane)p.push('Solo vibración'); sa.textContent=p.length?p.join(' · '):'Sin asistencia física'; }
   timers.search=setInterval(()=>{ i++; const el=document.getElementById('stxt');if(el)el.textContent=msgs[Math.min(i,msgs.length-1)]; if(i>=msgs.length-1){clearInterval(timers.search);setTimeout(()=>goTo(6),900);} },900);
 }
 
@@ -3208,7 +2779,7 @@ function updateSearchBtn(){
   const d = document.getElementById('inp-dest');
   const btn = document.getElementById('search-btn');
   if(!btn) return;
-  const ready = (GEO_STATE.origin.valid || (o && isValidAddrInput(o.value))) && (GEO_STATE.dest.valid || (d && isValidAddrInput(d.value)));
+  const ready = o && o.value.trim().length > 2 && d && d.value.trim().length > 2;
   btn.disabled = !ready;
   btn.style.opacity = ready ? '1' : '.35';
   btn.style.pointerEvents = ready ? 'auto' : 'none';
@@ -3222,22 +2793,17 @@ function mapStepOriginDone(){
   if(d2) d2.className='msb-dot act';
 }
 function clearOrigin(){
-  GEO_STATE.origin = {lat:null,lon:null,display:null,valid:false};
   const el=document.getElementById('inp-origin'); if(el){el.value='';el.focus();}
-  const sugg=document.getElementById('origin-suggestions'); if(sugg) sugg.style.display='none';
-  const stat=document.getElementById('origin-status'); if(stat) stat.style.display='none';
   updateSearchBtn();
 }
 function clearDest(){
-  GEO_STATE.dest = {lat:null,lon:null,display:null,valid:false};
   const el=document.getElementById('inp-dest'); if(el){el.value='';el.focus();}
-  const sugg=document.getElementById('dest-suggestions'); if(sugg) sugg.style.display='none';
-  const stat=document.getElementById('dest-status'); if(stat) stat.style.display='none';
   updateSearchBtn();
 }
 
 // Render Google Maps-style canvas map of Bogotá
 function showMap(origVal, destVal){
+  const empty  = document.getElementById('map-empty');
   const canvas = document.getElementById('map-canvas');
   const svg    = document.getElementById('map-svg-overlay');
   const badge  = document.getElementById('map-stops-badge');
@@ -3335,6 +2901,7 @@ function showMap(origVal, destVal){
 
   // Show canvas + SVG overlay
   canvas.style.display = 'block';
+  if(empty) empty.style.display = 'none';
   if(svg){ svg.style.display = 'block'; }
   if(badge){ badge.style.display='flex'; badge.style.alignItems='center'; }
   if(accurDot) accurDot.style.display='block';
@@ -3356,10 +2923,12 @@ function showMap(origVal, destVal){
 function hideMap(){
   const canvas = document.getElementById('map-canvas');
   const svg    = document.getElementById('map-svg-overlay');
+  const empty  = document.getElementById('map-empty');
   const badge  = document.getElementById('map-stops-badge');
   const accurDot = document.getElementById('accuracy-dot');
   if(canvas) canvas.style.display='none';
   if(svg)   svg.style.display='none';
+  if(empty) empty.style.display='flex';
   if(badge) badge.style.display='none';
   if(accurDot) accurDot.style.display='none';
 }
@@ -3573,21 +3142,6 @@ function buildStationHTML(stations){
 }
 
 function startMapSearch(){
-  // Validate: both fields must have valid geocoded addresses
-  const o = document.getElementById('inp-origin');
-  const d = document.getElementById('inp-dest');
-  if(!GEO_STATE.origin.valid && o && !isValidAddrInput(o.value)){
-    markFieldError('inp-origin','Selecciona una dirección válida de la lista');
-    o.focus(); return;
-  }
-  if(!GEO_STATE.dest.valid && d && !isValidAddrInput(d.value)){
-    markFieldError('inp-dest','Selecciona una dirección válida de la lista');
-    d.focus(); return;
-  }
-  // If both geocoded, update the map with real coords
-  if(GEO_STATE.origin.valid && GEO_STATE.dest.valid){
-    drawMapWithCoords();
-  }
   const dest = document.getElementById('inp-dest');
   const orig = document.getElementById('inp-origin');
   if(!dest || !dest.value.trim()){
@@ -3634,7 +3188,8 @@ function startMapSearch(){
     // Show results, hide empty state
     const empty   = document.getElementById('results-empty');
     const loaded  = document.getElementById('results-loaded');
-      if(loaded){ loaded.style.display = 'flex'; }
+    if(empty)  empty.style.display  = 'none';
+    if(loaded){ loaded.style.display = 'flex'; }
 
     advMapStep(5);
     ann('Se encontraron ' + data.routes.length + ' rutas accesibles. Selecciona la que más te acomode y elige tu estación de abordaje.');
@@ -3844,10 +3399,6 @@ function resetS4(){
   const dest = document.getElementById('inp-dest');
   if(orig){ orig.value = ''; clearFieldError('inp-origin'); }
   if(dest){ dest.value = ''; clearFieldError('inp-dest'); }
-  GEO_STATE.origin = {lat:null,lon:null,display:null,valid:false};
-  GEO_STATE.dest   = {lat:null,lon:null,display:null,valid:false};
-  const os=document.getElementById('origin-suggestions'); if(os) os.style.display='none';
-  const ds=document.getElementById('dest-suggestions');   if(ds) ds.style.display='none';
 
   // Reset step bar to step 1
   advMapStep(1);
